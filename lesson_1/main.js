@@ -129,32 +129,73 @@ Arithmetic
 
 //------------------------------Array------------------------------//
 
-Array.isArray([]); //true
-Array.isArray({}); //false
-Array.isArray('asd'); //false
+// Array.isArray([]); //true
+// Array.isArray({}); //false
+// Array.isArray('asd'); //false
 
-var languages = [
-    'Javascript',
-    'PHP',
-    'Ruby',
-];
+// var languages = [
+//     'Javascript',
+//     'PHP',
+//     'Ruby',
+// ];
 
-var languages2 = [
-    '1',
-    '2'
-];
+// var languages2 = [
+//     '1',
+//     '2'
+// ];
 
-// console.log(languages.toString());
-// console.log(languages.join(' '));
-// console.log(languages.pop()); //xoa element cuoi mang va tra ve no
+// // console.log(languages.toString());
+// // console.log(languages.join(' '));
+// // console.log(languages.pop()); //xoa element cuoi mang va tra ve no
+// // console.log(languages);
+// // console.log(languages.push('Dart', 'C++'));
+// // console.log(languages);
+// // console.log(languages.shift());
+// // console.log(languages);
+// // console.log(languages.unshift('C','HTML'));
+// // console.log(languages);
+// // languages.splice(1, 0, 'Dart', 'Java')
+// // console.log(languages);
+// console.log(languages.concat(languages2));
+// console.log(languages.splice());
 // console.log(languages);
-// console.log(languages.push('Dart', 'C++'));
-// console.log(languages);
-// console.log(languages.shift());
-// console.log(languages);
-// console.log(languages.unshift('C','HTML'));
-// console.log(languages);
-// languages.splice(1, 0, 'Dart', 'Java')
-// console.log(languages);
-console.log(languages.concat(languages2));
-console.log(languages.slice(-2, -1));
+
+//-----------------------------Function-----------------------------//
+
+// function showDialog() {
+//     alert('Hi, xin chao cac ban');
+// }
+
+// showDialog();
+
+// function writeLog() {
+//     var myString = '';
+//     for (var param of arguments) {
+//         myString += `${param} - `;
+//     }
+//     console.log(myString);
+// }
+
+// // writeLog(1, 2, 3, 4);
+// var needle = 'Hihi',
+//     haystack = 'Cay JS tai F8';
+// console.log(haystack.indexOf(needle));
+// console.log(Boolean(haystack.indexOf(needle)));
+
+function showDialog() {
+
+} // Declaration function
+
+var showMessage = function name() {
+
+}
+
+setTimeout(function name() {
+
+});
+
+var myObject ={
+    myFunction: function name() {
+
+    }
+} // Expression function
