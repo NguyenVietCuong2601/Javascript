@@ -182,20 +182,21 @@ Arithmetic
 // console.log(haystack.indexOf(needle));
 // console.log(Boolean(haystack.indexOf(needle)));
 
-function showDialog() {
+// function showDialog() {
 
-} // Declaration function
+// } // Declaration function
 
-var showMessage = function name() {
+// var showMessage = function name() {
 
-}
+// }
 
-setTimeout(function name() {
+// setTimeout(function name() {
 
-});
+// });
 
-var myObject ={
-    myFunction: function name() {
+// var myObject ={
+//     myFunction: function name() {
 
-    }
-} // Expression function
+//     }
+// } // Expression function
+
