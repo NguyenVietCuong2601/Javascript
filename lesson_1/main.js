@@ -200,3 +200,60 @@ Arithmetic
 //     }
 // } // Expression function
 
+//-----------------------------Object-----------------------------//
+var emailKey = 'email';
+
+var myInfo = {
+    name: 'Cuong',
+    age: 22,
+    address: 'Quang Nam',
+    [emailKey]: 'cuong@cuong.com',
+    getName: function() {
+        return this.name;
+    }
+};
+// function --> phuong thuc
+// others --> property
+
+myInfo['asd-asds'] = 'asdsad';
+
+var myKey = 'address';
+
+delete myInfo.age
+
+console.log(myInfo.getName())
+
+// Constructor
+
+function User(firstName, lastName, avatar) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.avatar = avatar;
+
+    this.getName = function() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+
+//var author = new User('Cuong', 'Nguyen', 'Avatar');
+var user = new User('Alo', 'Aba', 'Avatar');
+var user2 = new User('Luffy', 'Monkey.D', 'Avatar');
+
+//author.title = 'chia se tai f8';
+//user.comment = 'Ladasdasd'
+
+// console.log(author.getName());
+// console.log(user)
+// console.log(author.constructor === user.constructor);
+
+User.prototype.className = 'F8';
+User.prototype.getClassName = function() {
+    return this.className;
+}
+
+console.log(user.className);
+console.log(user2.getClassName());
+
+// Doi tuong Date
+
+var D
