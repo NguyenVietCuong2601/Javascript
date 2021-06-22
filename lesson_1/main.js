@@ -201,59 +201,206 @@ Arithmetic
 // } // Expression function
 
 //-----------------------------Object-----------------------------//
-var emailKey = 'email';
+// var emailKey = 'email';
 
-var myInfo = {
-    name: 'Cuong',
-    age: 22,
-    address: 'Quang Nam',
-    [emailKey]: 'cuong@cuong.com',
-    getName: function() {
-        return this.name;
-    }
-};
-// function --> phuong thuc
-// others --> property
+// var myInfo = {
+//     name: 'Cuong',
+//     age: 22,
+//     address: 'Quang Nam',
+//     [emailKey]: 'cuong@cuong.com',
+//     getName: function() {
+//         return this.name;
+//     }
+// };
+// // function --> phuong thuc
+// // others --> property
 
-myInfo['asd-asds'] = 'asdsad';
+// myInfo['asd-asds'] = 'asdsad';
 
-var myKey = 'address';
+// var myKey = 'address';
 
-delete myInfo.age
+// delete myInfo.age
 
-console.log(myInfo.getName())
+// console.log(myInfo.getName())
 
-// Constructor
+// // Constructor---------------------------------------------
 
-function User(firstName, lastName, avatar) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.avatar = avatar;
+// function User(firstName, lastName, avatar) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.avatar = avatar;
 
-    this.getName = function() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-}
+//     this.getName = function() {
+//         return `${this.firstName} ${this.lastName}`;
+//     }
+// }
 
-//var author = new User('Cuong', 'Nguyen', 'Avatar');
-var user = new User('Alo', 'Aba', 'Avatar');
-var user2 = new User('Luffy', 'Monkey.D', 'Avatar');
+// //var author = new User('Cuong', 'Nguyen', 'Avatar');
+// var user = new User('Alo', 'Aba', 'Avatar');
+// var user2 = new User('Luffy', 'Monkey.D', 'Avatar');
 
-//author.title = 'chia se tai f8';
-//user.comment = 'Ladasdasd'
+// //author.title = 'chia se tai f8';
+// //user.comment = 'Ladasdasd'
 
-// console.log(author.getName());
-// console.log(user)
-// console.log(author.constructor === user.constructor);
+// // console.log(author.getName());
+// // console.log(user)
+// // console.log(author.constructor === user.constructor);
 
-User.prototype.className = 'F8';
-User.prototype.getClassName = function() {
-    return this.className;
-}
+// User.prototype.className = 'F8';
+// User.prototype.getClassName = function() {
+//     return this.className;
+// }
 
-console.log(user.className);
-console.log(user2.getClassName());
+// console.log(user.className);
+// console.log(user2.getClassName());
 
-// Doi tuong Date
+// // Doi tuong Date---------------------------------------
 
-var D
+// var date = new Date();
+
+// console.log(date);
+
+// var year = date.getFullYear();
+// var month = date.getMonth() + 1;
+// var day = date.getDate();
+
+// console.log(`${day}/${month}/${year}`);
+
+//----------------------------Switch----------------------------//
+// var date = 9;
+
+// switch(date) {
+//     case 2:
+//         console.log('Hom nay la thu 2');
+//         break;
+//     case 3:
+//         console.log('Hom nay la thu 3');
+//         break;
+//     case 4:
+//         console.log('Hom nay la thu 4');
+//         break;
+//     case 5:
+//         console.log('Hom nay la thu 5');
+//         break;
+//     default:
+//         console.log('Khong biet')
+// }
+
+// Ternary operator------------------------------------
+
+// var course = {
+//     name: 'Javascript',
+//     coin: 250
+// };
+
+// if (course.coin > 0) {
+//     console.log(`${course.coin} Coins`);
+// } else console.log('Mien phi');
+
+// var result = course.coin > 0 ? `${course.coin} Coins` : 'Mien phi';
+// console.log(result);
+
+// for loop------------------------------------------
+// var myArray = [
+//     'a',
+//     'b',
+//     'c',
+//     'd'
+// ];
+
+// arraylength = myArray.length;
+
+// for (var i = 0; i < arraylength; i++) {
+//     console.log(myArray[i]);
+// }
+
+//For/in loop--------------------------------------
+
+// var myInfo = {
+//     name: 'Cuong',
+//     age: 22,
+//     address: 'Quang Nam'
+// }
+
+// var languages = [
+//     'JS',
+//     'PHP',
+//     'Ruby',
+//     'Java'
+// ];
+
+// var language = 'Javascript';
+
+// for (var key in language) {
+//     console.log(language[key]);
+// }
+
+//For/of loop--------------------------------------
+
+// var languages = [
+//     'JS',
+//     'PHP',
+//     'Ruby',
+//     'Java'
+// ];
+
+// var myInfo = {
+//     name: 'Cuong',
+//     age: 22,
+//     address: 'Quang Nam'
+// }
+
+// for (var value of Object.values(myInfo)) {
+//     console.log(value)
+// }
+
+//while loop
+
+// var i = 0;
+
+// while (i < 1000) {
+//     i++;
+//     console.log(i);
+// }
+
+//Do/While loop---------------------------------------
+
+// var i = 0;
+// var isSuccess = false;
+
+// do {
+//     i++;
+//     console.log('Nap the lan ' + i);
+
+//     if (true) {
+//         isSuccess = true;
+//     }
+
+// } while (i <= 3 && !isSuccess)
+
+//Break & Continue in Loop------------------------------
+
+// for (var i = 0; i < 10; i++){
+
+//     if (i%2 !== 0) {
+//         continue;
+//     }
+//     console.log(i);
+
+//     // if (i >= 5) {
+//     //     break;
+//     // }
+// }
+
+//Nested loop-----------------------------------------
+//  var myArray = [
+//      [1, 2],
+//      [3, 4],
+//      [5, 6]
+//  ];
+
+//  for (var i = 0; i < myArray.length; i++) {
+//      for (var j = 0; j < myArray[i].length; j++) {
+//          console.log(myArray[i][j]);
+//      }
+//  }
