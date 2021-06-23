@@ -217,7 +217,7 @@ Arithmetic
 
 // myInfo['asd-asds'] = 'asdsad';
 
-// var myKey = 'address';
+// console.log(myInfo)
 
 // delete myInfo.age
 
@@ -404,3 +404,147 @@ Arithmetic
 //          console.log(myArray[i][j]);
 //      }
 //  }
+
+/**
+ * Array methods:
+ *  forEach()
+ *  every()
+ *  some()
+ *  find()
+ *  filter()
+ *  map()
+ *  reduce()
+ */
+
+var courses = [
+    {
+        id: 1,
+        name: 'Javascript',
+        coin: 250
+    },
+    {
+        id: 2,
+        name: 'HTML, CSS',
+        coin: 0
+    },
+    {
+        id: 3,
+        name: 'Ruby',
+        coin: 100
+    },
+    {
+        id: 4,
+        name: 'PHP',
+        coin: 300
+    },
+    {
+        id: 5,
+        name: 'C',
+        coin: 0
+    },
+    {
+        id: 6,
+        name: 'C++',
+        coin: 500
+    },
+]
+
+// courses.forEach(function(course, index) {
+//     console.log(course)
+// }); //call back
+
+// var isFree = courses.some(function(course, index) {
+//     return course.coin === 0;
+// }); //call back
+
+// var isFree = courses.find(function(course, index) {
+//     return course.name === 'Ruby';
+// }); //call back
+
+// var isFree = courses.filter(function(course, index) {
+//     return course.coin === 0;
+// }); //call back
+
+// console.log(isFree.length);
+
+// var formValues = [
+//     { field: 'name', value: 'Sơn Đặng' },
+//     { field: 'age', value: 18 },
+//     { field: 'address', value: 'Hà Nội' },
+// ]
+
+// var obj = {};
+//         formValues.forEach(function(object){
+//             obj[`${object.field}`] = object.value;
+//         })
+//     console.log(obj)
+
+// var monsters = [
+//     {
+//         name: 'Cá heo',
+//         attack: 50,
+//         speed: 100,
+//         hitpoint: 100,
+//     },
+//     {
+//         name: 'Khủng long',
+//         attack: 150,
+//         speed: 80,
+//         hitpoint: 180,
+//     },
+// ];
+
+// var find = monsters.find(function(monster) {
+//     return monster.attack === 150;
+// })
+
+// console.log(find)
+
+// if (find === undefined) {
+//     console.log('null');
+// } else  console.log(find);
+
+//map()---------------------------------------------------
+// function courseHandler(course, index) {
+//     return {
+//         id: course.id,
+//         name: `Khoa hoc: ${course.name}`,
+//         coin: course.coin,
+//         coinText: `Gia ${course.coin}`,
+//         index: index,
+//     }
+// }
+
+// var newCourses = courses.map(courseHandler);
+
+// console.log(newCourses)
+
+// var inputs = [1, 'hi', false, 8, undefined, '', NaN];
+
+// var toBoolean = inputs.map(function(input) {
+//     return Boolean(input);
+// });
+
+// console.log(toBoolean);
+
+//reduce()-----------------------------------------------
+var i = 0;
+
+function coinHandler(accumulator, currentValue) {
+
+    i++
+    var total = accumulator + currentValue.coin;
+
+     console.table({
+        'Luot chay: ': i,
+        'Bien thich tru': accumulator,
+        'Gia khoa hoc': currentValue.coin,
+        'Tich tru duoc': total 
+     })
+
+    return total;
+}
+
+var totalCoin = courses.reduce(coinHandler, 0);
+
+console.log(totalCoin);
