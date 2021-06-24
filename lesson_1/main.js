@@ -416,38 +416,38 @@ Arithmetic
  *  reduce()
  */
 
-var courses = [
-    {
-        id: 1,
-        name: 'Javascript',
-        coin: 250
-    },
-    {
-        id: 2,
-        name: 'HTML, CSS',
-        coin: 0
-    },
-    {
-        id: 3,
-        name: 'Ruby',
-        coin: 100
-    },
-    {
-        id: 4,
-        name: 'PHP',
-        coin: 300
-    },
-    {
-        id: 5,
-        name: 'C',
-        coin: 0
-    },
-    {
-        id: 6,
-        name: 'C++',
-        coin: 500
-    },
-]
+// var courses = [
+//     {
+//         id: 1,
+//         name: 'Javascript',
+//         coin: 250
+//     },
+//     {
+//         id: 2,
+//         name: 'HTML, CSS',
+//         coin: 0
+//     },
+//     {
+//         id: 3,
+//         name: 'Ruby',
+//         coin: 100
+//     },
+//     {
+//         id: 4,
+//         name: 'PHP',
+//         coin: 300
+//     },
+//     {
+//         id: 5,
+//         name: 'C',
+//         coin: 0
+//     },
+//     {
+//         id: 6,
+//         name: 'C++',
+//         coin: 500
+//     },
+// ]
 
 // courses.forEach(function(course, index) {
 //     console.log(course)
@@ -528,23 +528,104 @@ var courses = [
 // console.log(toBoolean);
 
 //reduce()-----------------------------------------------
-var i = 0;
+// var i = 0;
 
-function coinHandler(accumulator, currentValue) {
+// function coinHandler(accumulator, currentValue) {
 
-    i++
-    var total = accumulator + currentValue.coin;
+//     i++
+//     var total = accumulator + currentValue.coin;
 
-     console.table({
-        'Luot chay: ': i,
-        'Bien thich tru': accumulator,
-        'Gia khoa hoc': currentValue.coin,
-        'Tich tru duoc': total 
-     })
+//      console.table({
+//         'Luot chay: ': i,
+//         'Bien thich tru': accumulator,
+//         'Gia khoa hoc': currentValue.coin,
+//         'Tich tru duoc': total 
+//      })
 
-    return total;
+//     return total;
+// }
+
+// var totalCoin = courses.reduce(coinHandler, 0);
+
+// console.log(totalCoin);
+
+// var numbers = [1,2,3,4,5]
+
+// var totalCoin = numbers.reduce(function(total, number) {
+//     return total + number;
+// });
+
+//Flat
+// var depthArray = [1, 2, [3, 4], 5, 6, [7, 8, 9]];
+
+// var flatArray = depthArray.reduce(function(flatOutput, depthItem){
+//     return flatOutput.concat(depthItem);
+// }, []);
+
+// var topics = [
+//     {
+//         topic: 'Front-end',
+//         courses: [
+//             {
+//                 id: 1,
+//                 title: 'HTML, CSS'
+//             },
+//             {
+//                 id: 2,
+//                 title: 'Javascript'
+//             }
+//         ]
+//     },
+//     {
+//         topic: 'Back-end',
+//         courses: [
+//             {
+//                 id: 1,
+//                 title: 'PHP'
+//             },
+//             {
+//                 id: 2,
+//                 title: 'NodeJS'
+//             }
+//         ]
+//     }
+// ];
+
+// var newCourse = topics.reduce(function(course, topic){
+//     return course.concat(topic.courses)
+// }, [])
+
+// console.log(newCourse);
+
+// var htmls = newCourse.map(function(course){
+//     return `
+//         <div>
+//             <h2>${course.title}</h2>
+//             <p>ID: ${course.id}</p>
+//         </div>
+//     `;
+// });
+
+// console.log(htmls.join(''))
+
+//Reduce medthods----------------------------------------------------
+
+Array.prototype.reduce2 = function(callback, result) {
+    let i = 0
+    if (arguments.length < 2) {
+        i = 1;
+        result = this[0];
+    }
+    for (; i < this.length; i++) {
+       result = callback(result, this[i], i, this)
+    }
+    return result;
 }
 
-var totalCoin = courses.reduce(coinHandler, 0);
+const numbers = [1, 2, 3, 4, 5]
 
-console.log(totalCoin);
+const result = numbers.reduce2(function(total, number) {
+    return total + number;
+})
+
+console.log(result)
