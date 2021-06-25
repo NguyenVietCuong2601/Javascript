@@ -416,38 +416,38 @@ Arithmetic
  *  reduce()
  */
 
-// var courses = [
-//     {
-//         id: 1,
-//         name: 'Javascript',
-//         coin: 250
-//     },
-//     {
-//         id: 2,
-//         name: 'HTML, CSS',
-//         coin: 0
-//     },
-//     {
-//         id: 3,
-//         name: 'Ruby',
-//         coin: 100
-//     },
-//     {
-//         id: 4,
-//         name: 'PHP',
-//         coin: 300
-//     },
-//     {
-//         id: 5,
-//         name: 'C',
-//         coin: 0
-//     },
-//     {
-//         id: 6,
-//         name: 'C++',
-//         coin: 500
-//     },
-// ]
+var courses = [
+    {
+        id: 1,
+        name: 'Javascript',
+        coin: 250
+    },
+    {
+        id: 2,
+        name: 'HTML, CSS',
+        coin: 10
+    },
+    {
+        id: 3,
+        name: 'Ruby',
+        coin: 100
+    },
+    {
+        id: 4,
+        name: 'PHP',
+        coin: 300
+    },
+    {
+        id: 5,
+        name: 'C',
+        coin: 10
+    },
+    {
+        id: 6,
+        name: 'C++',
+        coin: 500
+    },
+]
 
 // courses.forEach(function(course, index) {
 //     console.log(course)
@@ -632,11 +632,128 @@ Arithmetic
 
 //includes method----------------------------------------------------
 
-var title = 'Responsive web design';
+// var title = 'Responsive web design';
 
-console.log(title.include('web', 1));
+// console.log(title.include('web', 1));
 
-var courses = ['JS', 'PHP', 'Dart'];
+// var courses = ['JS', 'PHP', 'Dart'];
 
-// neu chi so am thi = length + chi so am --- VD: 3 + -1 = 2
-console.log(courses.includes('JS', -1))
+// // neu chi so am thi = length + chi so am --- VD: 3 + -1 = 2
+// console.log(courses.includes('JS', -1))
+
+//Callback-----------------------------------------------------------
+
+//var courses = ['Js', 'PHP', 'Ruby'];
+function myFunction(param) {
+    if (typeof param === 'function') {
+        param('Hahaha');
+    }
+}
+
+function myCallback(value) {
+   // console.log('Value: ' + value)
+}
+
+myFunction(myCallback);
+
+Array.prototype.map2 = function(callback) {
+    var output = []
+    var arrayLength = this.length;
+    for (var i = 0; i < arrayLength; i++) {
+        var result = callback(this[i], i);
+        output.push(result);
+    }
+    
+    return output;
+}
+
+var htmls  = courses.map2(function(course) {
+    return `<h2>${course}</h2>`;
+});
+
+//console.log(htmls.join(''));
+
+var htmls = courses.map2(function(course) {
+    return `<h2>${course}</h2>`;
+})
+
+//console.log(htmls.join(''));
+
+//My forEach()
+
+Array.prototype.forEach2 = function (callback) {
+    for (var index in this) {
+        if (this.hasOwnProperty(index)) {
+            callback(this[index], index, this);
+        }
+    }
+}
+
+courses.forEach2(function(course, index, array) {
+    //console.log(course, index, array)
+})
+
+//My Filter()
+
+Array.prototype.filter2 = function(callback) {
+    var output = [];
+
+    for (var index in this) {
+        if (this.hasOwnProperty(index)) {
+            var result = callback(this[index], index, this);
+            if (result) {
+                output.push(this[index]);
+            }
+        }
+    }
+
+    return output;
+}
+
+var filterCourses = courses.filter2(function(course, index, array) {
+    return course.coin > 200;
+});
+
+//console.log(filterCourses);
+
+//My some()
+
+Array.prototype.some2 = function(callback) {
+    for (var index in this) {
+        if (this.hasOwnProperty(index)) {
+            if (callback(this[index], index, this)) {
+                return true;
+            };
+        }
+    }
+    return false;
+}
+
+var result = courses.some2(function(course, index, array) {
+    return course.coin === 250;
+});
+
+//console.log(result);
+
+//My every()
+
+Array.prototype.every2 = function(callback) {
+    var output = true;
+    for (var index in this) {
+        if (this.hasOwnProperty(index)) {
+            var result = callback(this[index], index, this);
+            if  (!result) {
+                output = false;
+                break;
+            }
+        }
+    }
+    
+    return output;
+}
+
+var result = courses.every2(function(course, index, array) {
+    return course.coin > 0;
+});
+
+console.log(result)
