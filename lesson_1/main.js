@@ -40,7 +40,7 @@
 
 // DOM Attribute -----------------------------------------------------------------------------
 
-var headingElement = document.querySelector('h1');
+//var headingElement = document.querySelector('h1');
 
 //headingElement.setAttribute('data', 'test-data');
 
@@ -49,7 +49,7 @@ var headingElement = document.querySelector('h1');
 
 // innerText, textContent ----------------------------------------------------- --------------
 
-var headingElement = document.querySelector('h1.heading');
+//var headingElement = document.querySelector('h1.heading');
 
 //headingElement.innerText = 'New heading';
 
@@ -61,10 +61,37 @@ var headingElement = document.querySelector('h1.heading');
 
 // InnerHTML, OuterHTML-----------------------------------------------------------------------
 
-var boxElement = document.querySelector('.box');
+//var boxElement = document.querySelector('.box');
 
 //boxElement.innerHTML = '<span>Test</span>';
 //boxElement.outerHTML = '<span>Test</span>'
 
 //console.log(boxElement.outerHTML);
 //console.log(document.querySelector('h1').innerText);
+
+// DOM CSS -----------------------------------------------------------------------------------
+
+// var boxElement = document.querySelector('.box');
+
+// Object.assign(boxElement.style, {
+//     width: '100px',
+//     height: '200px',
+//     backgroundColor: 'red',
+// })
+
+// console.log(boxElement.style.backgroundColor);
+
+// ClassList property ------------------------------------------------------------------------
+/**
+ * add
+ * contains
+ * remove
+ * toggle
+ */
+var boxElement = document.querySelector('.box');
+
+boxElement.classList.add('red');
+
+setInterval(() => {
+    boxElement.classList.toggle('red');
+}, 1000);
