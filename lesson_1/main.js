@@ -88,10 +88,43 @@
  * remove
  * toggle
  */
-var boxElement = document.querySelector('.box');
 
-boxElement.classList.add('red');
+// var boxElement = document.querySelector('.box');
 
-setInterval(() => {
-    boxElement.classList.toggle('red');
-}, 1000);
+// boxElement.classList.add('red');
+
+// setInterval(() => {
+//     boxElement.classList.toggle('red');
+// }, 1000);
+
+//DOM events ---------------------------------------------------------------------------------
+//1. Attribute events
+//2. Assign event using the element node
+
+// var h1Elements = document.querySelectorAll('h1');
+
+// for (var i = 0; i < h1Elements.length; i++) {
+//     h1Elements[i].onclick = function(e) {
+//         console.log(e.target);
+//     }
+// }
+
+// 1. Input / Select
+// 2. Key up / down
+// var inputValue;
+
+// var inputElement = document.querySelector('input[type="text"]');
+
+// inputElement.onkeydown = function(e) {
+//     inputValue = e.target.value;
+//     console.log(inputValue);
+// }
+
+document.onkeydown = function(e) {
+    console.log(e.which)
+    switch(e.which) {
+        case 27:
+            console.log('exit');
+            break;
+    }
+}
