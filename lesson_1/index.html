@@ -10,6 +10,13 @@
         .red {
             color: red;
         }
+        ul {
+            display: none;
+        }
+
+        input:focus ~ ul {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -55,18 +62,46 @@
         <h1>Class List</h1>
     </div> -->
 
-    <!-- <h1>
+    <!-- <h1> DOM events
         <span>DOM events 1</span>
     </h1> -->
 
-    <input type="text"> 
+    <!-- <input type="text">  Input/ Select/ Key up/ down
     <input type="checkbox">
 
     <select name="" id="">
         <option value="value1">1</option>
         <option value="value2">2</option>
         <option value="value3">3</option>
-    </select>
+    </select> -->
+
+    <!-- <a href="https://f8.edu.vn"> preventDefault
+        Hoc lap trinh
+    </a>
+
+    <br>
+
+    <a href="https://google.com.vn">
+        Tim kiem
+    </a>
+
+    <br>
+
+    <input placeholder="Tim kiem" />
+
+    <ul>
+        <li>Javascript</li>
+        <li>PHP</li>
+        <li>Golang</li>
+    </ul> -->
+     
+    <!-- <div> stopPropagation
+        DIV
+
+        <button>Click me!</button>
+    </div> -->
+
+    <button id="btn">Click me!</button>
 
     <script src="./main.js"></script>
 </body>

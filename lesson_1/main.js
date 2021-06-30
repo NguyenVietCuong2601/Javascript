@@ -47,7 +47,7 @@
 //console.log(headingElement.getAttribute('class'));
 //console.log(headingElement.getAttribute('data'));
 
-// innerText, textContent ----------------------------------------------------- --------------
+// innerText, textContent --------------------------------------------------------------------
 
 //var headingElement = document.querySelector('h1.heading');
 
@@ -88,7 +88,6 @@
  * remove
  * toggle
  */
-
 // var boxElement = document.querySelector('.box');
 
 // boxElement.classList.add('red');
@@ -109,8 +108,7 @@
 //     }
 // }
 
-// 1. Input / Select
-// 2. Key up / down
+// 1. Input / Select -------------------------------------------------------------------------
 // var inputValue;
 
 // var inputElement = document.querySelector('input[type="text"]');
@@ -120,11 +118,66 @@
 //     console.log(inputValue);
 // }
 
-document.onkeydown = function(e) {
-    console.log(e.which)
-    switch(e.which) {
-        case 27:
-            console.log('exit');
-            break;
-    }
+// 2. Key up /down ---------------------------------------------------------------------------
+// document.onkeydown = function(e) {
+//     console.log(e.which)
+//     switch(e.which) {
+//         case 27:
+//             console.log('exit');
+//             break;
+//     }
+// }
+
+// 3. preventDefault -------------------------------------------------------------------------
+// var aElements = document.links;
+
+// for (var i = 0; i < aElements.length; i++) {
+//     aElements[i].onclick = function(e) {
+        
+//         if (!e.target.href.startsWith('https://f8.edu.vn')) {
+//             e.preventDefault();
+//         }
+//     }
+// }
+
+// var ulElement = document.querySelector('ul');
+
+// ulElement.onmousedown = function(e) {
+//     e.preventDefault();
+// }
+
+// ulElement.onclick = 
+//     function(e) {
+//         console.log(e.target);
+//     }
+
+// 4. stopPropagation ------------------------------------------------------------------------
+// document.querySelector('div').onclick = function(e) {
+//     console.log('DIV');
+// }
+
+// document.querySelector('button').onclick = function(e) {
+//     e.stopPropagation();
+//     console.log('Click me!');
+// }
+
+// Event Listener ----------------------------------------------------------------------------
+
+// 1. Xu ly nhieu viec khi 1 event xay ra
+// 2. Lang nghe / Huy bo lang nghe
+var btn = document.querySelector('#btn');
+
+function viec1() {
+    console.log('Viec 1');
 }
+
+function viec2() {
+    console.log('Viec 2');
+}
+
+btn.addEventListener('click', viec1);
+btn.addEventListener('click', viec2);
+
+setTimeout(function () {
+    btn.removeEventListener('click', viec1);
+}, 3000);
