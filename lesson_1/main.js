@@ -162,22 +162,79 @@
 // }
 
 // Event Listener ----------------------------------------------------------------------------
-
 // 1. Xu ly nhieu viec khi 1 event xay ra
 // 2. Lang nghe / Huy bo lang nghe
-var btn = document.querySelector('#btn');
+// var btn = document.querySelector('#btn');
 
-function viec1() {
-    console.log('Viec 1');
-}
+// function viec1() {
+//     console.log('Viec 1');
+// }
 
-function viec2() {
-    console.log('Viec 2');
-}
+// function viec2() {
+//     console.log('Viec 2');
+// }
 
-btn.addEventListener('click', viec1);
-btn.addEventListener('click', viec2);
+// btn.addEventListener('click', viec1);
+// btn.addEventListener('click', viec2);
 
-setTimeout(function () {
-    btn.removeEventListener('click', viec1);
-}, 3000);
+// setTimeout(function () {
+//     btn.removeEventListener('click', viec1);
+// }, 3000);
+
+// JSON (JavaScript Object Notation) ---------------------------------------------------------
+// Stringify: Tu JS types -> JSON
+// Parse: Tu JSON -> JS types
+
+// var json = '["Javascript","PHP"]';
+// var json = '{"name":"Cuong","age":22}';
+
+// console.log(JSON.stringify({
+//     name: 'Cuong',
+//     age: 22
+// }))
+
+// Promise(sync, async) ----------------------------------------------------------------------
+/**
+ * Async: setTimeout, setInterval, fetch, XMLHttpRequest, file reading,
+ *        request animation frame
+ * 
+ * Callback -> Callback hell ?
+ * Pyramid of doom ?
+ * 
+ */
+// 1. new Promise
+// 2. Executor
+
+// 1.Pendding
+// 2.Fulfilled
+// 3.Reject
+
+var promise = new Promise(
+    //Excutor
+    function(resolve, reject) {
+        //Logic
+        //Thanh cong: resolve()
+        //That bai: reject()
+
+        //Fake call API
+        // resolve([
+        //     {
+        //         id: 1,
+        //         name: 'Javascript'
+        //     }
+        // ]);
+
+        reject('Ma loi!')
+    }
+);
+
+promise
+    .then(function(courses) {
+        console.log(courses);
+    })
+    .catch(function(error) {
+        console.log(error);
+    })
+    .finally(function() {
+        console.log('Done!');
+    })
