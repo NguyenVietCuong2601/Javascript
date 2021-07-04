@@ -1,9 +1,24 @@
 {
-    "courses": [
-        {
-            "id": 1,
-            "name": "Kiến thức cơ bản, cốt lõi dân IT cần học trước",
-            "description": "Kiến thức cơ bản, cốt lõi dân IT cần học trước"
-        }
-    ]
-  }
+  "courses": [
+    {
+      "id": 1,
+      "name": "Kiến thức cơ bản, cốt lõi dân IT cần học trước",
+      "description": "Kiến thức cơ bản, cốt lõi dân IT cần học trước"
+    },
+    {
+      "name": "HTML, CSS từ Zero đến Hero",
+      "description": "Khóa học đề cao việc thực hành qua những ví dụ trong thực tế giúp học viên nhanh chóng xây dựng được giao diện website",
+      "id": 2
+    },
+    {
+      "name": "Xây dựng web responsive",
+      "description": "Khóa học này sẽ giúp bạn nắm chắc tư tưởng cốt lõi của việc xây dựng giao diện website responsive và áp dụng trong thực tế",
+      "id": 3
+    },
+    {
+      "name": "Xây dựng web với NodeJS & ExpressJS",
+      "description": "Xây dựng web trong thực tế với NodeJS & ExpressJS với cách chia sẻ chi tiết, tận tâm, dễ hiểu và chất giọng giàu sức sống của người chia sẻ",
+      "id": 6
+    }
+  ]
+}
