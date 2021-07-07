@@ -86,21 +86,21 @@
 // console.log(jsCourses.getPrice());
 
 // Default Parameter values ------------------------------------------------------------------
-function logger(log) {
-    // ES5
-    if (typeof log === 'undefined') {
-        log = 'Gia tri mac dinh';
-    }
+// function logger(log) {
+//     // ES5
+//     if (typeof log === 'undefined') {
+//         log = 'Gia tri mac dinh';
+//     }
     
-    console.log(log);
-}
+//     console.log(log);
+// }
 
-function logger(log, type = 'log') {
-    // ES6
-    console[type](log);
-}
+// function logger(log, type = 'log') {
+//     // ES6
+//     console[type](log);
+// }
 
-logger('Message', 'warn');
+// logger('Message', 'warn');
 
 // Enchanced object literals -----------------------------------------------------------------
 // 1. Dinh nghia key: value cho object
@@ -125,12 +125,126 @@ logger('Message', 'warn');
 
 // console.log(course.getName());
 
-var fieldName = 'name';
-var fieldPrice = 'price';
+// var fieldName = 'name';
+// var fieldPrice = 'price';
 
-const course = {
-    [fieldName]: 'Javascript',
-    [fieldPrice]: 1000
+// const course = {
+//     [fieldName]: 'Javascript',
+//     [fieldPrice]: 1000
+// }
+
+// console.log(course);
+
+// Destructuring -----------------------------------------------------------------------------
+// var array = ['Javascript', 'PHP', 'Ruby'];
+
+// var a = array[0];
+// var b = array[1];
+// var c = array[2];
+
+// var [a, b, ...rest] = array;
+
+// console.log(a);
+// console.log(rest);
+
+// var course = {
+//     name: 'Javascript',
+//     price: 1000,
+//     image: 'image-address',
+//     children: {
+//         name: 'ReactJS'
+//     }
+// }
+
+// var {name,...rest} = course;
+// var {name: parentName, children: {name}} = course
+// console.log(parentName);
+// console.log(name);
+
+// var {name, description = 'default description'} = course;
+
+// console.log(name);
+// console.log(description);
+
+// function logger(...params) {
+//     console.log(params);
+// }
+
+// console.log(logger(1,2,3,4,5,6,7));
+
+// function logger({name, price, ...rest}) {
+//     console.log(name);
+//     console.log(price);
+//     console.log(rest);
+// }
+
+// logger ({
+//     name: 'Javascript',
+//     price: 1000,
+//     description: 'Description content'
+// })
+
+// function logger([a, b, ...rest]) {
+//     console.log(a);
+//     console.log(b);
+//     console.log(rest);
+// }
+
+// logger([2, 6, 7, 3, 1, 1])
+
+// Spread ------------------------------------------------------------------------------------
+// var array1 = ['Javascript', 'PHP', 'Ruby'];
+// var array2 = ['ReactJS', 'Dart'];
+
+// var array3 = [...array2, ...array1];
+
+// console.log(array3);
+
+// var object1 = {
+//     name: 'Javacript'
+// }
+// var object2 = {
+//     price: 1000
+// }
+// var object3 = {
+//     ...object1,
+//     ...object2
+// }
+
+// console.log(object3);
+
+// var array = ['Javascript', 'PHP', 'Ruby', 'ReactJS'];
+
+// function logger(...rest) {
+//     for (var i = 0; i < rest.length; i++) {
+//         console.log(rest[i]);
+//     }
+// }
+
+// logger(...array);
+
+// Tagged template literals ------------------------------------------------------------------
+// function highlight(...rest) {
+//     console.log(rest);
+// }
+
+// var brand = 'f8';
+// var coures = 'JavaScript';
+
+// highlight`Hoc lap trinh ${coures} tai ${brand}!`;
+
+function highlight([first, ...strings], ...values) {
+    return values.reduce(
+        (acc, curr) => [...acc, `<span>${curr}</span>`, strings.shift()],
+        [first]
+    ).join('');
 }
 
-console.log(course);
+
+
+var brand = 'f8';
+var coures = 'JavaScript';
+
+const html = highlight`Hoc lap trinh ${coures} tai ${brand}!`;
+
+console.log(html);
