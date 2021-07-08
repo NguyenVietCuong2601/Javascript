@@ -233,18 +233,57 @@
 
 // highlight`Hoc lap trinh ${coures} tai ${brand}!`;
 
-function highlight([first, ...strings], ...values) {
-    return values.reduce(
-        (acc, curr) => [...acc, `<span>${curr}</span>`, strings.shift()],
-        [first]
-    ).join('');
+// function highlight([first, ...strings], ...values) {
+//     return values.reduce(
+//         (acc, curr) => [...acc, `<span>${curr}</span>`, strings.shift()],
+//         [first]
+//     ).join('');
+// }
+
+
+
+// var brand = 'f8';
+// var coures = 'JavaScript';
+
+// const html = highlight`Hoc lap trinh ${coures} tai ${brand}!`;
+
+// console.log(html);
+
+// Modules -----------------------------------------------------------------------------------
+// Import / Export
+import {logger2} from './logger/index.js';
+// import {
+//     TYPE_LOG,
+//     TYPE_WARN,
+//     TYPE_ERROR
+// } from './constants.js';
+import * as constants from './constants.js';
+
+// console.log(constants.TYPE_ERROR);
+// logger2('test message...', constants.TYPE_WARN);
+
+// Optional chaining (?.) --------------------------------------------------------------------
+// const obj = {
+//     name: 'Alice',
+//     cat: {
+//       name: 'Dinah',
+//       cat2: {
+//         name: 'Dinah 2',
+//         cat3: {
+//             name: 'Dinah 3'
+//             }
+//         }
+//     }
+// };
+
+// if (obj.cat?.cat?.cat2?.cat3) {
+//     console.log(obj.cat.cat2.cat3.name);
+// }
+
+const obj = { 
+    // getName(value) {
+    //     console.log(value)
+    // }
 }
 
-
-
-var brand = 'f8';
-var coures = 'JavaScript';
-
-const html = highlight`Hoc lap trinh ${coures} tai ${brand}!`;
-
-console.log(html);
+obj.getName?.(123);
