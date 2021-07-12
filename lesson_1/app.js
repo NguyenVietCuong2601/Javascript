@@ -287,3 +287,53 @@ const obj = {
 }
 
 obj.getName?.(123);
+
+// De quy ------------------------------------------------------------------------------------
+// 1. Xac dinh diem dung
+// 2. Logic handle => Tao ra diem dung
+
+// var array = ['a', 'b', 'c', 'a', 'b', 'c'];
+// console.log([...new Set(array)]);
+
+// function countDown(num) {
+//     if (num > 0) {
+//         console.log(num);
+//         return countDown(num - 1);
+//     }
+//     return num;
+// }
+
+// function loop(start, end, cb) {
+//     if (start < end) {
+//         cb(start);
+//         return loop(start + 1, end, cb);
+//     }
+// }
+
+// var array = ['Javascript', 'PHP', 'Ruby'];
+
+// loop(0, array.length, function(index) {
+//     console.log(array[index]);
+// });
+
+// function giaiThua(number) {
+//     if (number > 0) {
+//         return number * giaiThua(number - 1);
+//     }
+//     return 1;
+// }
+
+// console.log(giaiThua(6))
+
+// Polyfill ----------------------------------------------------------------------------------
+if (!String.prototype.includes) {
+    String.prototype.includes = function(search, start) {
+      'use strict';
+  
+      if (search instanceof RegExp) {
+        throw TypeError('first argument must not be a RegExp');
+      }
+      if (start === undefined) { start = 0; }
+      return this.indexOf(search, start) !== -1;
+    };
+}
