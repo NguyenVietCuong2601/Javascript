@@ -53,10 +53,18 @@
             form: '#form-1',
             errorSelector: '.form-message',
             rules: [
-                Validator.isRequired('#fullname'),
+                Validator.isRequired('#fullname', 'Vui long nhap ten day du cua ban'),
                 Validator.isEmail('#email'),
                 Validator.minLength('#password', 6),
-            ]
+                Validator.isRequired('#password_confirmation'),
+                Validator.isComfirmed('#password_confirmation', function () {
+                    return document.querySelector('#form-1 #password').value;
+                }, 'Mat khau nhap lai khong chinh xac')
+            ],
+            onSubmit: function(data) {
+                // Call API
+                console.log(data);
+            }
         })
 
     </script>
