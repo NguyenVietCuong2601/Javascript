@@ -1,5 +1,16 @@
 
 function Validator(formSelector) {
+    function getParent (element, selector) {
+
+        while (element.parentElement) {
+            if (element.parentElement.matches(selector)) {
+                return element.parentElement;
+            }
+            element = element.parentElement;
+        }
+
+    }
+
     var formRules = {};
     var validatorRules = {
 
@@ -37,15 +48,69 @@ function Validator(formSelector) {
 
             var rules = input.getAttribute('rules').split('|');
             for (var rule of rules) {
-                if (rule.includes(':')) {
-                    var ruleInfo = rule.split(':');
+                var ruleInfo;
+                var isRuleHasValue = rule.includes(':');
 
+                if (isRuleHasValue) {
+                    ruleInfo = rule.split(':');
                     rule = ruleInfo[0];
                 }
-                console.log(rule);
+
+                var ruleFunc = validatorRules[rule]
+
+                if (isRuleHasValue) {
+                    ruleFunc = ruleFunc(ruleInfo[1]);
+                }
+
+                if (Array.isArray(formRules[input.name])) {
+                    formRules[input.name].push(ruleFunc);
+                } else {
+                    formRules[input.name] = [ruleFunc]
+                }
             }
 
-            formRules[input.name] = input.getAttribute('rules');
+            // Lang nghe su kien de validate (onblur, onchange,...)
+            input.onblur = handleValidate;
+            input.oninput = handleClearError;
+        }
+
+        // Ham xu ly validate
+        function handleValidate(event) {
+            var rules = formRules[event.target.name]
+            var errorMessage;
+            rules.some(function (rule) {
+                errorMessage = rule(event.target.value)
+                return errorMessage;
+            })
+
+            // Neu co loi thi thong bao
+            if (errorMessage) {
+                var formGroup = getParent(event.target, '.form-group');
+                if (formGroup) {
+                    formGroup.classList.add('invalid');
+                    var formMessage = formGroup.querySelector('.form-message')
+                    if (formMessage) {
+                        formMessage.innerText = errorMessage;
+                    }
+                }
+            }
+        }
+
+        // Ham clear error message
+        function handleClearError(event) {
+            var formGroup = getParent(event.target, '.form-group');
+
+            if (formGroup.classList.contains('invalid')) {
+                formGroup.classList.remove('invalid');
+
+                if (formGroup) {
+                    var formMessage = formGroup.querySelector('.form-message')
+
+                    if (formMessage) {
+                        formMessage.innerText = '';
+                    }
+                }
+            }
         }
 
         console.log(formRules);
