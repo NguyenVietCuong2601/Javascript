@@ -1,5 +1,10 @@
 
-function Validator(formSelector) {
+function Validator(formSelector, options) {
+    // Gan gia tri mac dinh cho tham so (ES5)
+    if (!options) {
+        options = {};
+    }
+
     function getParent (element, selector) {
 
         while (element.parentElement) {
@@ -94,6 +99,8 @@ function Validator(formSelector) {
                     }
                 }
             }
+
+            return !errorMessage;
         }
 
         // Ham clear error message
@@ -112,7 +119,57 @@ function Validator(formSelector) {
                 }
             }
         }
-
-        console.log(formRules);
     }
+
+    // Xu ly hanh vi submit form
+    formElement.onsubmit = function(event) {
+        event.preventDefault();
+
+        var inputs = formElement.querySelectorAll('[name][rules]');
+        var isValid = true;
+
+        for (var input of inputs) {
+            if (!handleValidate({ target: input })) {
+                isValid = false;
+            }
+        }
+        
+        // Khi khong co loi thi submit form
+        if (isValid) {
+            
+            if (typeof options.onSubmit === 'function') {
+                var enableInputs = formElement.querySelectorAll('[name]');
+                var formValues = Array.from(enableInputs).reduce(function (values, input) {
+                    switch(input.type) {
+                        case 'radio':
+                            values[input.name] =formElement.querySelector('input[name="' +  input.name + '"]:checked').value;
+                            break;
+                        case 'checkbox':
+                            if (!input.matches(':checked')) {
+                                values[input.name] = '';
+                                return values
+                            };
+                            if (!Array.isArray(values[input.name])) {
+                                values[input.name] = [];
+                            }
+                            values[input.name].push(input.value);
+                            break;
+                        case 'file':
+                            values[input.name] = input.files;
+                            break;
+                        default:
+                            values[input.name] = input.value;
+                    }
+                    return values;
+                }, {});
+
+                // Goi lai ham onSubmit va tra ve gia tri cua form
+                options.onSubmit(formValues);
+            } else {
+                formElement.submit();
+            }
+        }
+    }
+
+    console.log(formRules);
 }
