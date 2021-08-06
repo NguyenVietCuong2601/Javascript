@@ -82,7 +82,7 @@ function logger(first, last) {
 // the same as above but first = Son and last = Dang
 
 // A function can access to the vars are declared inside its scope and outside its scope
-const fullName = "Long Nguyen";
+//const fullName = "Long Nguyen";
 
 function logger(first, last) {
     console.log(first, last);
@@ -95,7 +95,7 @@ function logger(first, last) {
 //logger('Son', 'Dang'); 
 
 // The method of accessing var
-const age = 18;
+//const age = 18;
 {
     const age = 16;
     {
@@ -222,3 +222,36 @@ function createApp() {
 // app1.get();
 // app1.add('BMW');
 // app1.get();
+
+// Hoisting ----------------------------------------------------------------------------------
+// Bring var declarations and function declarations to the top of the declared scope
+
+// var age; => Just declare var top the top and dont assign its value
+// console.log(age); // undefined
+// console.log(fullName); // Reference error: fullName is not defined
+// var age = 16;
+
+// Function => bring all the function to the top => it can be used before declared
+//console.log(sum(6, 9));
+function sum(a, b) {
+    return a + b;
+}
+
+// Let, Const => It is bringed to the top but it isnt assigned default value (Temporal Dead Zone)
+{
+    //console.log(fullName); // ReferenceError: Cannot access 'fullName' before initialization
+    let fullName = 'Nguyen Van A';
+} 
+
+// Example:
+{
+    const counter1 = makeCounter()
+    console.log(counter1());
+    function makeCounter() {
+        let counter = 0;
+        return increase;
+        function increase() {
+            return ++counter;
+        }
+    }
+}
