@@ -1,4 +1,4 @@
-"use strict";
+"use strict"; // Khai bao strict mode
 
 // Cannot assign variables without using var, let, const--------------------------------------
 var fullName = "Nguyen Van A";

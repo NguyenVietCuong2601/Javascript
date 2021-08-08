@@ -1,3 +1,4 @@
+"use strict";
 // Function Expression
 // // IIFE
 (function (message) {
@@ -246,7 +247,7 @@ function sum(a, b) {
 // Example:
 {
     const counter1 = makeCounter()
-    console.log(counter1());
+    //console.log(counter1());
     function makeCounter() {
         let counter = 0;
         return increase;
@@ -254,4 +255,92 @@ function sum(a, b) {
             return ++counter;
         }
     }
+}
+
+// Value types & Reference types -------------------------------------------------------------
+// value types
+{
+    
+    let a = 1;
+    let b = a;
+    a = 2;
+    //console.log(b);
+}
+
+// reference types ------------------------------------------------
+{
+    // var a is assigned the address of the memmory area where it save the value
+    let a = {
+        name: 'Mercedes',
+    }
+    let b = a; // b is assigned the address is saved in a
+    a.name = 'BMW';
+    //console.log(b); 
+}
+
+{
+    // when a new object is created it will be assigned a new memmory area
+    let a = {
+        name: 'Mercedes',
+    }
+
+    a = { 
+        name: 'BMW',
+        type: 'car',
+    }
+}
+
+{
+    const student = {
+        name: 'Cuong Nguyen',
+        profile: {
+            firstName: 'Cuong',
+            lastName: 'Nguyen',
+            age: '18'
+        }
+    }
+    const studentProfile = student.profile;
+    student.profile.age = '22';
+    //console.log(studentProfile.age);
+}
+
+
+// Value types
+{
+    function sum(a, b) {
+        // let a = c
+        // let b = d
+        //console.log(a, b)
+    }
+    const c = 1;
+    const d = 2;
+    sum(c, d);
+}
+
+// Reference types
+{
+    function func(obj) {
+        obj.name = 'Mercedes';
+        //console.log(obj);
+    }
+    const a = {
+        name: 'BMW'
+    }
+    func(a);
+    //console.log(a); // side effect
+}
+
+{
+    function createCar(obj) {
+        //obj = JSON.parse(JSON.stringify(obj));
+        obj = {...obj}
+        obj.name = 'Mercedes';
+        return obj;
+    }
+    const a = {
+        name: 'BMW',
+    }
+    const newCar = createCar(a);
+    console.log(a);
+    console.log(newCar);
 }
