@@ -341,6 +341,72 @@ function sum(a, b) {
         name: 'BMW',
     }
     const newCar = createCar(a);
-    console.log(a);
-    console.log(newCar);
+    //console.log(a);
+    //console.log(newCar);
+}
+
+// "This" - keyword --------------------------------------------------------------------------
+// Inside a method, "this" references to an object that accesses method (before the dot)
+{
+    const iPhone7 = {
+        // Property - Thuoc tinh
+        name: 'iPhone7',
+        color: 'Pink',
+        weight: 300,
+
+        // Method - Phuong thuc
+        takePhoto() {
+            console.log(this)
+        },
+        objChild: {
+            name: 'Child Object',
+            methodChild() {
+                console.log(this)
+            }
+        }
+    }
+    //console.log(iPhone7.takePhoto());
+    //console.log(iPhone7.objChild.methodChild());
+}
+
+{
+    // "This" in function creator represents the created object
+    function Car(name, color, weight) {
+        this.name = name;
+        this.color = color;
+        this.weight = weight;
+        this.run = function() {
+            console.log('Running...', this);
+        }
+    }
+    Car.prototype.run2 = function() {
+        // Context
+        // if "This" in a function it will reference to window object but in strict mode it will be undefined
+        function test() {
+            console.log(this);
+        }
+        test();
+    }   
+
+    const mercedesS450 = new Car('Mercedes S450', 'black', 1200);
+    //console.log(mercedesS450.run());
+    //console.log(mercedesS450.run2());
+}
+
+{
+    const button = document.querySelector('button');
+    //console.log(button);
+    // button.onclick = function() {
+    //     console.dir(this);
+    // }
+}
+
+// Outside a method, "this" references to global object
+//console.log(this);
+{
+    // in strict mode this will return undefined
+    function myFunc() {
+        console.log(this);
+    }
+    //myFunc();
 }
