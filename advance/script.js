@@ -1,4 +1,4 @@
-"use strict";
+{"use strict";
 // Function Expression
 // // IIFE
 (function (message) {
@@ -409,4 +409,45 @@ function sum(a, b) {
         console.log(this);
     }
     //myFunc();
+}
+}
+
+// Fn.bind() method --------------------------------------------------------------------------
+{
+    this.firstName = 'Minh';
+    this.lastName = 'Thu';
+    const teacher = {
+        firstName: 'Minh',
+        lastName: 'Thao',
+        getFullName(data1, data2) {
+            console.log(data1, data2)
+            return `${this.firstName} ${this.lastName}`;
+        },
+    }
+    const student = {
+        firstName: 'Cuong',
+        lastName: 'Nguyen',
+    }
+
+    // case 1:
+    //console.log(teacher.getFullName());
+
+    // case 2: 
+    //const getTeacherName = teacher.getFullName.bind(teacher);
+    const getTeacherName = teacher.getFullName.bind(student);
+    //console.log(getTeacherName('Test 1', 'Test 2'));
+}
+
+{
+    const teacher = {
+        firstName: 'Minh',
+        lastName: 'Thao',
+        getFullName() {
+            console.log(`${this.firstName} ${this.lastName}`)
+        },
+    }
+
+    //teacher.getFullName();
+    const button = document.querySelector('button');
+    button.onclick = teacher.getFullName.bind(teacher)
 }
