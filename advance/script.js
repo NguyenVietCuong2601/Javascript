@@ -443,11 +443,67 @@ function sum(a, b) {
         firstName: 'Minh',
         lastName: 'Thao',
         getFullName() {
-            console.log(`${this.firstName} ${this.lastName}`)
+            //console.log(`${this.firstName} ${this.lastName}`)
         },
     }
 
     //teacher.getFullName();
     const button = document.querySelector('button');
-    button.onclick = teacher.getFullName.bind(teacher)
+    //button.onclick = teacher.getFullName.bind(teacher)
+}
+
+{
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
+
+    const app = (() => {
+        const cars = ['BMW'];
+        const root = $('#root');
+        const input = $('#input');
+        const submit = $('#submit');
+
+        return {
+            add(car) {
+                cars.push(car);
+            },
+            delete(index) {
+                cars.splice(index, 1);
+            },
+            render() {
+                const html = cars.map((car, index) => `
+                    <li>
+                        ${car}
+                        <span class="delete" data-index="${index}">&times</span>
+                    </li>
+                `)
+                .join('')
+
+                root.innerHTML = html;
+            },
+            handleDelete(e) {
+                const deleteBtn = e.target.closest('.delete');
+                if (deleteBtn) {
+                    const index = deleteBtn.dataset.index;
+                    this.delete(index)
+                    this.render()
+                }
+            },
+            init() {
+                // Handle DOM events
+                submit.onclick = () => {
+                    const car = input.value 
+                    this.add(car);
+                    this.render();
+
+                    input.value = '';
+                    input.focus();
+                }
+
+                root.onclick = this.handleDelete.bind(this);
+                this.render();
+            }
+        }
+    })();
+
+    app.init();
 }
