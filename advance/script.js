@@ -505,5 +505,68 @@ function sum(a, b) {
         }
     })();
 
-    app.init();
+    //app.init();
+}
+
+// Fn.call() ---------------------------------------------------------------------------------
+{
+    // call afunction with call method
+    function random() {
+        console.log(Math.random());
+    }
+    //random.call();
+}
+
+{
+    // call function and bind this
+    // in strict mode it still accept this if it is binded
+    const teacher = {
+        firstName: "Minh",
+        lastName: "Thu",
+    }
+
+    const me = {
+        firstName: "Cuong",
+        lastName: "Nguyen",
+        showFullName() {
+            console.log(`${this.firstName} ${this.lastName}`);
+        },
+    }
+
+    me.showFullName.call(teacher)
+}
+
+{
+    // Display inheritance
+    function Animal(name, weight) {
+        this.name = name;
+        this.weight = weight;
+    }
+
+    function Chicken(name, weight, legs) {
+        Animal.call(this, name, weight);
+        this.legs = legs;
+    }
+
+    const sonDang = new Chicken('Son Dang', 66, 2)
+
+    //console.log(sonDang)
+}
+
+{
+    function logger() {
+        Array.prototype.forEach.call(arguments, item => {
+            console.log(item);
+        })
+    }
+    //logger(1, 2, 3, 4, 5)
+}
+
+{
+    function logger() {
+        const arr = Array.prototype.slice.call(arguments);
+        console.log(arr);
+        arr.forEach(item => console.log(item));
+    }
+    logger(1, 2, 3, 4, 5)
 }
